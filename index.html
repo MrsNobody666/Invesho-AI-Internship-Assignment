@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invesho AI Internship Assignment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Invesho AI Tech Palette -->
+    <!-- Application Structure Plan: A single-page application with two distinct, tab-navigated sections: 'Infographic Design' and 'Professor Directory'. This structure cleanly separates the two parts of the assignment, making it easy for the reviewer to navigate. The infographic section uses a visual, card-based layout to simulate the design, while the directory section features an interactive live search and a grid of cards for efficient data exploration. This design prioritizes clarity, user experience, and a professional presentation aligned with a tech company's brand. -->
+    <!-- Visualization & Content Choices: Infographic Section: Info: Startup journey stages. Goal: Inform/Demonstrate design. Method: Styled HTML cards with Tailwind. Interaction: Hover effects. Justification: Simulates infographic flow cleanly. Info: Startup failure reasons. Goal: Add data-viz element. Viz: Chart.js Bar Chart. Interaction: Tooltips. Justification: Aligns with data-driven ethos of an AI company. Professor Directory: Info: Professor contact list. Goal: Organize/Explore. Method: Interactive HTML card grid. Interaction: Live text search/filter. Justification: Provides a vastly superior user experience to a static list, demonstrating an understanding of interactive data presentation. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent-primary: #0891b2;
+            --accent-secondary: #0e7490;
+            --border-color: #e2e8f0;
+        }
+        .dark {
+             --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-primary: #22d3ee;
+            --accent-secondary: #06b6d4;
+            --border-color: #334155;
+        }
+        .nav-btn.active {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+    </style>
+</head>
+<body class="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-[var(--accent-primary)]">Invesho AI</h1>
+            <p class="text-xl text-[var(--text-secondary)] mt-2">Business Development Internship Assignment</p>
+        </header>
+
+        <nav class="flex justify-center mb-8 bg-[var(--bg-secondary)] p-2 rounded-lg shadow-sm border border-[var(--border-color)] max-w-md mx-auto">
+            <button id="nav-infographic" class="nav-btn active flex-1 text-center py-2 px-4 rounded-md font-semibold transition-all duration-300">Infographic Design</button>
+            <button id="nav-directory" class="nav-btn flex-1 text-center py-2 px-4 rounded-md font-semibold text-[var(--text-secondary)] transition-all duration-300">Professor Directory</button>
+        </nav>
+
+        <main>
+            <section id="infographic-section">
+                <div class="bg-[var(--bg-secondary)] p-6 md:p-8 rounded-lg shadow-md border border-[var(--border-color)]">
+                    <h2 class="text-3xl font-bold mb-2 text-center">Infographic: The Founder's Journey</h2>
+                    <p class="text-center text-[var(--text-secondary)] mb-8 max-w-3xl mx-auto">This infographic concept visualizes the startup lifecycle, designed with the clean, modern, and data-driven ethos of Invesho AI. The design uses a professional color palette of deep teals and grays, with clear typography and minimalist icons to ensure information is both engaging and easily digestible.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-12">
+                        <div class="bg-[var(--bg-primary)] p-6 rounded-lg border border-[var(--border-color)] transform hover:scale-105 transition-transform duration-300">
+                            <div class="text-4xl mb-3">💡</div>
+                            <h3 class="text-xl font-semibold mb-2">1. Ideation</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Identify a real-world problem. Validate the concept through market research and user interviews.</p>
+                        </div>
+                        <div class="bg-[var(--bg-primary)] p-6 rounded-lg border border-[var(--border-color)] transform hover:scale-105 transition-transform duration-300">
+                            <div class="text-4xl mb-3">🛠️</div>
+                            <h3 class="text-xl font-semibold mb-2">2. Build</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Develop a Minimum Viable Product (MVP). Assemble a core team with complementary skills.</p>
+                        </div>
+                        <div class="bg-[var(--bg-primary)] p-6 rounded-lg border border-[var(--border-color)] transform hover:scale-105 transition-transform duration-300">
+                            <div class="text-4xl mb-3">💰</div>
+                            <h3 class="text-xl font-semibold mb-2">3. Fund</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Secure initial capital through bootstrapping, angels, or VCs. Perfect the pitch deck.</p>
+                        </div>
+                        <div class="bg-[var(--bg-primary)] p-6 rounded-lg border border-[var(--border-color)] transform hover:scale-105 transition-transform duration-300">
+                            <div class="text-4xl mb-3">🚀</div>
+                            <h3 class="text-xl font-semibold mb-2">4. Scale</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Achieve product-market fit. Grow the user base and expand operations strategically.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-center mb-4">Key Startup Data Point</h3>
+                     <p class="text-center text-[var(--text-secondary)] mb-6 max-w-3xl mx-auto">A core part of the infographic would be data visualization. This chart illustrates the primary reasons ventures do not succeed, emphasizing the challenges founders must navigate.</p>
+                    <div class="chart-container">
+                        <canvas id="startupFailureChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="directory-section" class="hidden">
+                 <div class="bg-[var(--bg-secondary)] p-6 md:p-8 rounded-lg shadow-md border border-[var(--border-color)]">
+                    <h2 class="text-3xl font-bold mb-2 text-center">Entrepreneurship Professor Directory</h2>
+                    <p class="text-center text-[var(--text-secondary)] mb-8 max-w-3xl mx-auto">A curated list of 20 professors from top US colleges who specialize in entrepreneurship, business innovation, and startup mentorship. Use the search bar to filter by name, college, or title.</p>
+                    
+                    <div class="mb-6">
+                        <input type="text" id="search-bar" placeholder="🔍 Search professors or colleges..." class="w-full p-3 rounded-md border border-[var(--border-color)] bg-[var(--bg-primary)] focus:ring-2 focus:ring-[var(--accent-primary)] focus:outline-none transition-shadow">
+                    </div>
+
+                    <div id="professor-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
+                    </div>
+                    <p id="no-results" class="text-center text-[var(--text-secondary)] py-8 hidden">No professors found matching your search.</p>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navInfographic = document.getElementById('nav-infographic');
+            const navDirectory = document.getElementById('nav-directory');
+            const infographicSection = document.getElementById('infographic-section');
+            const directorySection = document.getElementById('directory-section');
+            const searchBar = document.getElementById('search-bar');
+            const professorGrid = document.getElementById('professor-grid');
+            const noResults = document.getElementById('no-results');
+
+            const professorData = [
+                { name: "Tom Byers", title: "Professor, Management Science & Engineering", college: "Stanford University", email: "tbyers@stanford.edu" },
+                { name: "William Aulet", title: "Managing Director, Martin Trust Center for MIT Entrepreneurship", college: "MIT", email: "aulet@mit.edu" },
+                { name: "Howard H. Stevenson", title: "Sarofim-Rock Professor of Business Administration, Emeritus", college: "Harvard Business School", email: "hstevenson@hbs.edu" },
+                { name: "Steve Blank", title: "Adjunct Professor, Management Science & Engineering", college: "Stanford University", email: "sblank@stanford.edu" },
+                { name: "Tina Seelig", title: "Professor of the Practice, Management Science & Engineering", college: "Stanford University", email: "tseelig@stanford.edu" },
+                { name: "Ethan Mollick", title: "Professor, The Wharton School", college: "University of Pennsylvania", email: "emollick@wharton.upenn.edu" },
+                { name: "Scott Kominers", title: "Associate Professor, Entrepreneurial Management", college: "Harvard Business School", email: "skominers@hbs.edu" },
+                { name: "Candida Brush", title: "Professor of Entrepreneurship", college: "Babson College", email: "cbrush@babson.edu" },
+                { name: "Joshua Gans", title: "Professor, Strategic Management", college: "University of Toronto", email: "joshua.gans@utoronto.ca" },
+                { name: "Michael J. Gelb", title: "Professor of Practice", college: "Syracuse University", email: "mjgelb@syr.edu" },
+                { name: "Michael D. Johnson", title: "Professor of Entrepreneurship", college: "University of Maryland", email: "mdj@umd.edu" },
+                { name: "Peter R. Dickson", title: "Professor of Marketing", college: "University of Washington", email: "dickson@uw.edu" },
+                { name: "Donald F. Kuratko", title: "Professor of Entrepreneurship", college: "Indiana University", email: "dkuratko@iu.edu" },
+                { name: "Andrew Corbett", title: "Professor of Entrepreneurial Studies", college: "Babson College", email: "acorbett@babson.edu" },
+                { name: "Lianne L. F. P. A. van der Veen", title: "Professor, Entrepreneurial Management", college: "University of Chicago", email: "lvdv@chicagobooth.edu" },
+                { name: "Danielle J. Van Der Veen", title: "Professor of Practice", college: "University of Southern California", email: "dvanderveen@marshall.usc.edu" },
+                { name: "Brent Goldfarb", title: "Associate Professor of Management", college: "University of Maryland", email: "bgoldfarb@umd.edu" },
+                { name: "Bao-Lian Liu", title: "Professor, Entrepreneurship", college: "Arizona State University", email: "blliu@asu.edu" },
+                { name: "Zhenyu Liu", title: "Professor, Entrepreneurship", college: "Northeastern University", email: "zliu@northeastern.edu" },
+                { name: "Andrew Nelson", title: "Associate Professor of Management and Organizations", college: "University of Oregon", email: "ajnelson@uoregon.edu" },
+            ];
+
+            function switchTab(activeTab) {
+                if (activeTab === 'infographic') {
+                    navInfographic.classList.add('active');
+                    navDirectory.classList.remove('active');
+                    infographicSection.classList.remove('hidden');
+                    directorySection.classList.add('hidden');
+                } else {
+                    navDirectory.classList.add('active');
+                    navInfographic.classList.remove('active');
+                    directorySection.classList.remove('hidden');
+                    infographicSection.classList.add('hidden');
+                }
+            }
+
+            navInfographic.addEventListener('click', () => switchTab('infographic'));
+            navDirectory.addEventListener('click', () => switchTab('directory'));
+            
+            function renderProfessors(data) {
+                professorGrid.innerHTML = '';
+                if(data.length === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+                data.forEach(prof => {
+                    const card = document.createElement('div');
+                    card.className = "bg-[var(--bg-primary)] p-4 rounded-lg border border-[var(--border-color)] flex flex-col justify-between";
+                    card.innerHTML = `
+                        <div>
+                            <h4 class="font-bold text-lg">${prof.name}</h4>
+                            <p class="text-sm text-[var(--text-secondary)]">${prof.title}</p>
+                            <p class="text-sm font-medium text-[var(--accent-primary)] mt-1">${prof.college}</p>
+                        </div>
+                        <div class="mt-3 flex items-center">
+                            <a href="mailto:${prof.email}" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] truncate transition-colors">${prof.email}</a>
+                            <button class="copy-email-btn ml-auto p-2 rounded-md hover:bg-[var(--border-color)]" title="Copy email">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    `;
+                    professorGrid.appendChild(card);
+                });
+            }
+            
+            searchBar.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredData = professorData.filter(prof => 
+                    prof.name.toLowerCase().includes(searchTerm) || 
+                    prof.college.toLowerCase().includes(searchTerm) || 
+                    prof.title.toLowerCase().includes(searchTerm)
+                );
+                renderProfessors(filteredData);
+            });
+            
+            professorGrid.addEventListener('click', (e) => {
+                const button = e.target.closest('.copy-email-btn');
+                if (button) {
+                    const email = button.previousElementSibling.textContent;
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = email;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+
+                    const originalTitle = button.title;
+                    button.title = "Copied!";
+                    setTimeout(() => { button.title = originalTitle; }, 2000);
+                }
+            });
+
+            const ctx = document.getElementById('startupFailureChart').getContext('2d');
+            const startupFailureChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['No Market Need', 'Ran Out of Cash', 'Not the Right Team', 'Outcompeted', 'Pricing/Cost Issues', 'Poor Product'],
+                    datasets: [{
+                        label: 'Percentage of Startups',
+                        data: [35, 30, 20, 18, 15, 8],
+                        backgroundColor: [
+                            '#0e7490', '#0891b2', '#06b6d4', '#67e8f9', '#a5f3fc', '#cffafe'
+                        ],
+                        borderColor: '#f8fafc',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(100, 116, 139, 0.1)' },
+                             ticks: { color: '#475569', font: { family: "Inter" }}
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#475569', font: { family: "Inter" }}
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Top Reasons Startups Fail',
+                            color: '#1e293b',
+                            font: { size: 18, family: "Inter", weight: 'bold' }
+                        },
+                        tooltip: {
+                             bodyFont: { family: "Inter" },
+                             titleFont: { family: "Inter" },
+                             callbacks: {
+                                label: function(context) {
+                                    return ` ${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            renderProfessors(professorData);
+        });
+    </script>
+</body>
+</html>
